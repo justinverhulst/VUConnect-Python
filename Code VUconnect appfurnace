@@ -1,0 +1,120 @@
+if (af.storedData === null) {
+ af.storedData = {}; // init storedData to a blank object
+ af.storedData.name = "No name entered yet...";
+ af.saveStoredData();
+}
+
+// Update username display, from stored data
+updateDisplay();
+
+function saveData(){
+    // Save current input:
+ af.storedData.name = ui.input.text();
+  af.storedData.lastname = ui.input1.text();
+  af.storedData.email = ui.input2.text();
+   af.storedData.password = ui.input3.text();
+    af.storedData.password2 = ui.input4.text();
+    af.storedData.message = ui.input5.text();
+    
+ af.saveStoredData();
+ 
+ // Update username display:
+ updateDisplay();
+}
+
+function updateDisplay(){
+ // Update username display:
+  ui.name.text( af.storedData.name );
+  ui.name1.text( af.storedData.name );
+  ui.name2.text( af.storedData.name );
+  ui.name3.text( af.storedData.name );
+  ui.name4.text( af.storedData.name );
+  ui.name5.text( af.storedData.name );
+  ui.lastname.text( af.storedData.lastname );
+  ui.email.text( af.storedData.email );
+  ui.password.text( af.storedData.password );
+  ui.message.text ( af.storedData.message );
+
+}
+
+
+//---------
+// SKILLS PAGE
+//-------
+
+
+function tapped_python(){ 
+        ui.tapped_python.backgroundColor("#0088d4");
+               
+}  
+
+
+
+function tapped_web() {
+    ui.tapped_web.backgroundColor("#0088d4");
+}
+function tapped_design() {
+    ui.tapped_design.backgroundColor("#0088d4");
+}
+function tapped_academic() {
+    ui.tapped_academic.backgroundColor("#0088d4");    
+}
+
+
+
+// ui.tapped_skill.backgroundColor("#4286f4");
+
+//-------
+// ENDORSEMENT PAGE
+//-------
+
+function tapped_endorse_didi() {
+     ui.tapped_endorse_didi.backgroundColor("#00bf00");  
+}
+function tapped_endorse_minyi() {
+     ui.tapped_endorse_minyi.backgroundColor("#00bf00");  
+}
+function tapped_endorse_nadieh() {
+     ui.tapped_endorse_nadieh.backgroundColor("#00bf00");  
+}
+function tapped_endorse_tom() {
+     ui.tapped_endorse_tom.backgroundColor("#00bf00");  
+}
+function tapped_endorse_justin() {
+     ui.tapped_endorse_justin.backgroundColor("#00bf00");  
+}
+
+
+//--------
+// MENU ITEMS
+//---------
+
+function tapped_menu_home() {
+     ui.tapped_menu_home.backgroundColor("#00bf00");  
+}
+
+
+
+
+//------------------------------------------------------------------------------------------------------------------------------
+// Call this function on a button press. The image will be displayed on an Image widget with code name 'ui.photo'
+//------------------------------------------------------------------------------------------------------------------------------
+function takePhoto() {
+    navigator.camera.getPicture(photoSuccess, photoFail, { quality: 15, destinationType : 0 });   
+}
+
+// Called when taking a photo works, 
+function photoSuccess(imageString) {
+    if (imageString && imageString.length > 100) {
+        ui.photo.backgroundImage( "data:image/jpeg;base64," + imageString );
+        ui.photo1.backgroundImage( "data:image/jpeg;base64," + imageString );
+
+        // TODO: here's where you'd upload the contents of the imageString variable to your server.
+    } else {
+        popup("There was a problem taking the picture, please try again.", "Picture Failed");
+    }
+}
+
+function photoFail(message) {
+    popup('Failed to take photo because: ' + message);
+}
